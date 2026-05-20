@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // API keys are kept safely on the server
 let aiClient: GoogleGenAI | null = null;
@@ -16,7 +16,7 @@ function getGeminiClient(): GoogleGenAI {
   if (!aiClient) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error("找不到 GEMINI_API_KEY。請使用 AI Studio 的 Settings > Secrets 面板進行設定。");
+      throw new Error("找不到 GEMINI_API_KEY。請在本地 .env 檔案中設定 GEMINI_API_KEY。");
     }
     aiClient = new GoogleGenAI({
       apiKey,

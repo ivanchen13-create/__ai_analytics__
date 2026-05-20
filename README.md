@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# AI 會議記錄與翻譯工具
 
-# Run and deploy your AI Studio app
+這是一個使用 `React + Vite + TypeScript` 的前端應用，搭配 `Express` 後端與 `@google/genai` Gemini AI。專案已調整為一般 Express 伺服器部署，適合在任意 Node.js 主機上運行。
 
-This contains everything you need to run your app locally.
+## 快速開始
 
-View your app in AI Studio: https://ai.studio/apps/7d0ca820-2eb5-4725-8911-b81cb80c65dc
+**Prerequisites:** Node.js
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
+1. 安裝相依套件：
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. 建立 `.env` 檔案並設定 `GEMINI_API_KEY`
+3. 開發模式啟動：
    `npm run dev`
+
+## 部署
+
+- 先執行 `npm run build`
+- 再執行 `npm start`
+
+## 環境變數
+
+建立 `.env`，並加入：
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+PORT=3000
+```
+
+`PORT` 為可選值，預設會使用 `3000`。
+
+## 服務說明
+
+- `/api/generate`：接受 `transcript`、`targetLanguage`、`outputStyle`、`customInstruction`
+- 會使用 Gemini 生成會議摘要與翻譯結果
